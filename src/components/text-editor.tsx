@@ -28,7 +28,7 @@ export const TextEditor = () =>{
     }, 1000);
 
     useEffect(() => {
-    if (quillRef.current) {
+    if (quillRef.current){
 
     // Load initial content from Firestore
       getDoc(documentRef)
@@ -64,7 +64,7 @@ export const TextEditor = () =>{
 
             //Listen for local text changes and save it to Firestore
             const editor = quillRef.current.getEditor();
-            editor.on("text-change", ( delta, oldDelta, source)=>{
+            editor.on("text-change", ( _delta:any, _oldDelta:any, source:any)=>{
                 if (source === "user"){
                 isLocalChange.current = true;
 
@@ -75,6 +75,7 @@ export const TextEditor = () =>{
                 }
 
             });
+            
         }
 
     }, [])
